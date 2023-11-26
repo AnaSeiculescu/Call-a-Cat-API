@@ -1,8 +1,8 @@
 async function cat(req, context) {
     const catAPIkey = Netlify.env.get("CAT_API_KEY");
-    const numberOfCat = context.params.numCats;
+    const numberOfCats = context.params.numCats;
 
-    const URL = "https://api.thecatapi.com/v1/images/search?size=thumb";
+    const URL = `https://api.thecatapi.com/v1/images/search?size=thumb&limit=${numberOfCats}`;
     const options = {
       method: 'GET',
       headers: {
@@ -10,8 +10,8 @@ async function cat(req, context) {
       }
     };
     const res = await fetch(URL, options);
-    return new Response('you asked for ' + numberOfCat + ' cats');
-    // return res;
+    
+    return res;
 
 }
 
