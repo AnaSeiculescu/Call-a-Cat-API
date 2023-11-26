@@ -8,7 +8,7 @@ function App() {
   const idRef = useRef(0);
 
   function onHandlerCatBtnClick() {
-    const URL = "https://api.thecatapi.com/v1/images/search?size=thumb";
+    const URL = "https://cat-caller.netlify.app/cat-api/1";
     const options = {
       method: 'GET',
     };
@@ -57,7 +57,7 @@ function App() {
 
 
   function onHandlerCatsBtnClickVarianta1(nrOfCats) {
-    const URL = `https://api.thecatapi.com/v1/images/search?size=thumb&limit=${nrOfCats}`;
+    const URL = `https://cat-caller.netlify.app/cat-api/${nrOfCats}`;
     const options = {
       method: "GET",
     };
