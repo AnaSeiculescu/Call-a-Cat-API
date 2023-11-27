@@ -10,7 +10,7 @@ async function cat(req, context) {
       }
     };
     const res = await fetch(URL, options);
-    const content = res.text();
+    const content = await res.text();
 
     const response = new Response(content);
     response.headers.set('Cache-Control', 'no-store');
