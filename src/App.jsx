@@ -5,10 +5,11 @@ import CatList from './components/Cats/CatList';
 
 function App() {
   const [catList, setCatList] = useState([]);
-  const idRef = useRef(0);
+  // const idRef = useRef(0);
 
   function onHandlerCatBtnClick() {
     const URL = "https://cat-caller.netlify.app/cat-api/1";
+    // const URL = "https://api.thecatapi.com/v1/images/search?size=thumb";
     const options = {
       method: 'GET',
     };
@@ -18,78 +19,51 @@ function App() {
     })
     .then((data) => {
       setCatList([
-        {id: idRef.current, url: data[0].url, pictureId: data[0].id, pictureHeight: data[0].height},
+        {id: data[0].id, url: data[0].url, pictureHeight: data[0].height},
         ...catList
       ]);
-      idRef.current += 1;
+      // idRef.current += 1;
     })
     .catch((error) => {
       console.log('the error: ' + error);
     })
   }
 
-  function onHandlerFourCatsBtnClick() {
-    const URL = "https://api.thecatapi.com/v1/images/search?size=thumb&limit=4";
-    const options = {
-      method: "GET",
-    };
+  // function onHandlerCatsBtnClickVarianta1(nrOfCats) {
+  //   // const URL = `https://cat-caller.netlify.app/cat-api/${nrOfCats}`;
+  //   const URL = `https://api.thecatapi.com/v1/images/search?size=thumb&limit=${nrOfCats}`;
+  //   const options = {
+  //     method: "GET",
+  //   };
 
-      fetch(URL, options) 
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        const newCats = data.map((aCat, i) => (
-          {id: data[i].id, url: data[i].url, pictureHeight: data[i].height}
-        ));
-        setCatList([
-          ...newCats,
-          ...catList
-        ])
-        idRef.current += 4;
-      })
-      .catch((error) => {
-        console.log("the error: " + error);
-      })
+  //     fetch(URL, options) 
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       const newCats = data.map((aCat, i) => (
+  //         {id: data[i].id, url: data[i].url, pictureHeight: data[i].height}
+  //       ));
+  //       setCatList([
+  //         ...newCats,
+  //         ...catList
+  //       ])
+  //       // idRef.current += 4;
+  //     })
+  //     .catch((error) => {
+  //       console.log("the error: " + error);
+  //     })
 
-  }
-
-
-  function onHandlerCatsBtnClickVarianta1(nrOfCats) {
-    const URL = `https://cat-caller.netlify.app/cat-api/${nrOfCats}`;
-    const options = {
-      method: "GET",
-    };
-
-      fetch(URL, options) 
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        const newCats = data.map((aCat, i) => (
-          {id: data[i].id, url: data[i].url, pictureHeight: data[i].height}
-        ));
-        setCatList([
-          ...newCats,
-          ...catList
-        ])
-        idRef.current += 4;
-      })
-      .catch((error) => {
-        console.log("the error: " + error);
-      })
-
-  }
+  // }
 
   function onHandlerCatsBtnClickVarianta2(event) {
     console.log(event);
 
-    console.log('data-id: ', event.target.getAttribute('data-caca'))
-    console.log('data set: ', event.target.dataset.caca)
+    let howManyCats = event.target.attributes.getNamedItem('data-cats').value;
 
-    const URL = `https://api.thecatapi.com/v1/images/search?size=thumb&limit=${1}`;
+    // const URL = `https://api.thecatapi.com/v1/images/search?size=thumb&limit=${howManyCats}`;
+    const URL = `https://cat-caller.netlify.app/cat-api/1${howManyCats}`;
     const options = {
       method: "GET",
     };
@@ -107,7 +81,7 @@ function App() {
           ...newCats,
           ...catList
         ])
-        idRef.current += 4;
+        // idRef.current += 4;
       })
       .catch((error) => {
         console.log("the error: " + error);
@@ -123,13 +97,15 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container-fluid" style={{
+      width: '80vw',
+    }}>
       <div>
-        <h1>Welcome to the Cat Business</h1>
+        <h1 className="text-center">Welcome to the Cat Business</h1>
       </div>
-      <ActionSection myOneCatHandler={onHandlerCatBtnClick} myFourCatsHandler={onHandlerFourCatsBtnClick} callCats={onHandlerCatsBtnClickVarianta2} clearCats={clearAllCats}/>
+      <ActionSection myOneCatHandler={onHandlerCatBtnClick} callCats={onHandlerCatsBtnClickVarianta2} clearCats={clearAllCats}/>
       <CatList myCatList={catList}/>
-    </>
+    </div>
   )
 }
 
