@@ -63,7 +63,7 @@ function App() {
     let howManyCats = event.target.attributes.getNamedItem('data-cats').value;
 
     // const URL = `https://api.thecatapi.com/v1/images/search?size=thumb&limit=${howManyCats}`;
-    const URL = `https://cat-caller.netlify.app/cat-api/1${howManyCats}`;
+    const URL = `https://cat-caller.netlify.app/cat-api/${howManyCats}`;
     const options = {
       method: "GET",
     };

@@ -1,7 +1,7 @@
 
 // import { Dropdown } from "react-bootstrap/Dropdown"
 
-export default function ActionSection({myOneCatHandler, myFourCatsHandler, callCats, clearCats}) {
+export default function ActionSection({myOneCatHandler, callCats, clearCats}) {
     return (
         <div id="fixed-header" className='container-sm navbar sticky-top justify-content-center'>
             <div style={{
@@ -36,30 +36,20 @@ export default function ActionSection({myOneCatHandler, myFourCatsHandler, callC
                         aria-expanded="false">
                             Call Cats
                     </button>
-                    {/* <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a className="dropdown-item" href="#">2 cats</a></li>
-                        <li><a className="dropdown-item" href="#">3 cats</a></li>
-                        <li><a className="dropdown-item" href="#">4 cats</a></li>
-                        <li><a className="dropdown-item" href="#">8 cats</a></li>
-                    </ul> */}
+                  
                     {/* <ul id="varianta-1" className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li onClick={() => callCats(2)}><a className="dropdown-item" href="#">2 cats</a></li>
                         <li onClick={() => callCats(3)}><a className="dropdown-item" href="#">3 cats</a></li>
                         <li onClick={() => callCats(4)}><a className="dropdown-item" href="#">4 cats</a></li>
                         <li onClick={() => callCats(8)}><a className="dropdown-item" href="#">8 cats</a></li>
                     </ul> */}
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li data-caca="2" onClick={callCats}><a className="dropdown-item" href="#">2 cats</a></li>
-                        <li><a className="dropdown-item" href="#">3 cats</a></li>
-                        <li><a className="dropdown-item" href="#">4 cats</a></li>
-                        <li><a className="dropdown-item" href="#">8 cats</a></li>
+                    <ul id="varianta-2" className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a data-cats="2" onClick={callCats} className="dropdown-item" href="#">2 cats</a></li>
+                        <li><a data-cats="3" onClick={callCats} className="dropdown-item" href="#">3 cats</a></li>
+                        <li><a data-cats="4" onClick={callCats} className="dropdown-item" href="#">4 cats</a></li>
+                        <li><a data-cats="8" onClick={callCats} className="dropdown-item" href="#">8 cats</a></li>
                     </ul>
-                    {/* <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a className="dropdown-item" href="#">2 cats</a></li>
-                        <li><a className="dropdown-item" href="#">3 cats</a></li>
-                        <li><a className="dropdown-item" href="#">4 cats</a></li>
-                        <li><a className="dropdown-item" href="#">8 cats</a></li>
-                    </ul> */}
+                    
                 </div>
 
                 <button style={{
