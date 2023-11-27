@@ -10,6 +10,8 @@ async function cat(req, context) {
       }
     };
     const res = await fetch(URL, options);
+
+    res.headers.set('Cache-Control', 'no-store')
     
     return res;
 
